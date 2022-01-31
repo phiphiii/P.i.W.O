@@ -65,6 +65,6 @@ public class Pracownik {
 
     @Override
     public String toString() {
-        return imie+" "+nazwisko+" "+stanowisko+" "+placa+"zł "+umowa;
+        return id+". "+imie+" "+nazwisko+" - "+stanowisko+" - "+placa+"zł - "+umowa;
     }
 }

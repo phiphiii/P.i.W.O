@@ -13,8 +13,10 @@ public class Main {
         int option = 0;
         int stanowisko = 0;
         int usun_praco = 0;
+        int umowa_input = 0;
+        boolean wyswietlCheck = false;
         do {
-            System.out.println("Witamy w P.i.W.O (Pracownicy i Wiele Obiektów) - 1.0.1");
+            System.out.println("Witamy w P.i.W.O (Pracownicy i Wiele Obiektów) - 1.0.2");
             System.out.println("1. Dodaj pracownika");
             System.out.println("2. Wyświetl pracowników");
             System.out.println("3. Usuń pracownika");
@@ -54,9 +56,10 @@ public class Main {
                         System.out.println("2. "+Umowa.O_PRACE.name());
                         System.out.println("3. "+Umowa.O_DZIELO.name());
                         System.out.print("Podaj umowę: ");
-                        stanowisko = scanner.nextInt();
+                        umowa_input = scanner.nextInt();
 
-                    }while (stanowisko>4 || stanowisko<1);
+                    }while (umowa_input>4 || umowa_input<1);
+                    //debile.add(new Pracownik(2,imie_input,nazwisko_input,))
                     System.out.println("Dodanie użytkownika zakończone powodzeniem");
                     break;
                 case 2:
@@ -64,16 +67,20 @@ public class Main {
                     for (Pracownik klucz: debile) {
                         System.out.println(klucz.toString());
                     }
+                    wyswietlCheck = true;
                     break;
                 case 3:
-                    System.out.println("\nWybrałeś opcje by usunąć pracownika");
-                    do {
-                        System.out.println("\nPodaj id pracownika którego chcesz usunąć\nJeżeli wybrałeś tą opcje przez przypadek wpisz 0");
-                        usun_praco = scanner.nextInt();
-                        if (usun_praco<0){
-                            System.out.println("Podano minusową wartość, proszę podać wartość jeszcze raz");
-                        }
-                    }while(usun_praco!=0 || usun_praco>0);
+                    if(!wyswietlCheck){
+                        System.out.println("Nie wyświetliłeś wcześniej listy pracowników!\nWyświetl listę zanim będziesz chciał usunąć pracownika by się nie pomylić");
+                    }
+                    else {
+                        System.out.println("\nWybrałeś opcje by usunąć pracownika");
+                        do {
+                            System.out.println("\nPodaj id pracownika którego chcesz usunąć\nJeżeli wybrałeś tą opcje przez przypadek wpisz liczbę ujemną");
+                            usun_praco = scanner.nextInt();
+
+                        } while (usun_praco > 0);
+                    }
             }
 
             System.out.println();
