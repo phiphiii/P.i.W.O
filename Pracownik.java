@@ -1,11 +1,13 @@
 public class Pracownik {
+    int id;
     String imie;
     String nazwisko;
     Stanowisko stanowisko;
     int placa;
     Umowa umowa;
 
-    public Pracownik(String imie, String nazwisko, Stanowisko stanowisko, int placa, Umowa umowa) {
+    public Pracownik(int id,String imie, String nazwisko, Stanowisko stanowisko, int placa, Umowa umowa) {
+        this.id = id;
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.stanowisko = stanowisko;
@@ -51,5 +53,18 @@ public class Pracownik {
 
     public void setUmowa(Umowa umowa) {
         this.umowa = umowa;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return imie+" "+nazwisko+" "+stanowisko+" "+placa+"zł "+umowa;
     }
 }

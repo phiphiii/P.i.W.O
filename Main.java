@@ -6,14 +6,15 @@ public class Main {
     public static void main(String[] args) {
         List<Pracownik> debile = new ArrayList<Pracownik>();
 
-        Pracownik przystojniak = new Pracownik("Filip","Pietrzak",Stanowisko.TOTALNY_SZEF,50000,Umowa.O_PRACE);
+        Pracownik przystojniak = new Pracownik(1,"Filip","Pietrzak",Stanowisko.TOTALNY_SZEF,50000,Umowa.O_PRACE);
         debile.add(przystojniak);
 
         Scanner scanner = new Scanner(System.in);
         int option = 0;
         int stanowisko = 0;
+        int usun_praco = 0;
         do {
-            System.out.println("Witamy w P.i.W.O (Pracownicy i Wiele Obiektów) - 1.0.0");
+            System.out.println("Witamy w P.i.W.O (Pracownicy i Wiele Obiektów) - 1.0.1");
             System.out.println("1. Dodaj pracownika");
             System.out.println("2. Wyświetl pracowników");
             System.out.println("3. Usuń pracownika");
@@ -41,18 +42,38 @@ public class Main {
                         System.out.println("4. "+Stanowisko.TEAM_LEADER.name());
                         System.out.println("5. "+Stanowisko.PROGRAMER.name());
                         System.out.println("6. "+Stanowisko.TOTALNY_SZEF.name()+"\n");
-                        System.out.print("Podaj nazwisko: ");
+                        System.out.print("Podaj stanowisko: ");
                         stanowisko = scanner.nextInt();
 
                     }while (stanowisko>7 || stanowisko<1);
+                    System.out.print("Podaj wypłatę pracownika: ");
+                    int placa_input = scanner.nextInt();
+                    do{
+                        System.out.println("Wybierz umowę");
+                        System.out.println("1. "+Umowa.ZLECENIE.name());
+                        System.out.println("2. "+Umowa.O_PRACE.name());
+                        System.out.println("3. "+Umowa.O_DZIELO.name());
+                        System.out.print("Podaj umowę: ");
+                        stanowisko = scanner.nextInt();
 
+                    }while (stanowisko>4 || stanowisko<1);
+                    System.out.println("Dodanie użytkownika zakończone powodzeniem");
                     break;
                 case 2:
+                    System.out.println("Wszyscy pracownicy naszej firmy: ");
                     for (Pracownik klucz: debile) {
-                        System.out.println(klucz);
+                        System.out.println(klucz.toString());
                     }
                     break;
-
+                case 3:
+                    System.out.println("\nWybrałeś opcje by usunąć pracownika");
+                    do {
+                        System.out.println("\nPodaj id pracownika którego chcesz usunąć\nJeżeli wybrałeś tą opcje przez przypadek wpisz 0");
+                        usun_praco = scanner.nextInt();
+                        if (usun_praco<0){
+                            System.out.println("Podano minusową wartość, proszę podać wartość jeszcze raz");
+                        }
+                    }while(usun_praco!=0 || usun_praco>0);
             }
 
             System.out.println();
